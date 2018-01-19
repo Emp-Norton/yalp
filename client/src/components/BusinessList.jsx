@@ -109,12 +109,12 @@ class BusinessList extends React.Component {
     let entries = this.props.businesses.data;
     let filters = {
       is_open: this.sortByOpen,
-      price: this.sortByPrice,
-      rating: this.sortByRating,
+      price: this.sortPrioritizePrice,
+      rating: this.sortPrioritizeRating,
       favorited: this.sortByFavorited
     }
 
-    for (let filter in filters) {
+    for (let filter in filters) { // handle multiple active filters better
       if (this.state.activeFilters[filter] && filter != this.state.sortTypeToIgnore){
         if (filter === 'price') {
           if (this.state.activeFilters.rating) {
